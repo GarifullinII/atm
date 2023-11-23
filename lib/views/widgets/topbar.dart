@@ -3,59 +3,74 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../utils/constants.dart';
 
-/// Pages top bar with back navigation
-class TopBar extends StatelessWidget {
+/// Top bar widget
+class TopBar extends StatelessWidget implements PreferredSizeWidget {
   /// Constructor
   /// @param label - app bar label
-  /// @param labelWidget - widget instead text
-  /// @param centerLabel - center for label
-  /// @param lead - lead widget
-  /// @param leadAction - show back button
 
   const TopBar({
     required this.label,
-    this.labelWidget,
-    this.lead,
-    this.leadAction = true,
     super.key,
   });
 
   /// Page label
   final String label;
 
-  /// Widget instead text
-  final Widget? labelWidget;
-
-  /// Lead widget
-  final Icon? lead;
-
-  /// Show edit action
-  final bool leadAction;
-
   @override
   Widget build(BuildContext context) => AppBar(
-        backgroundColor: ColorConstants.blueColor,
-        leading: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            SvgPicture.asset(
-              'assets/images/ellipse.svg',
-              width: 25.35,
-              height: 20.82,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.bottomLeft,
+              end: const Alignment(5, 1),
+              colors: [
+                ColorConstants.blueColor,
+                ColorConstants.pinkColor
+              ],
             ),
-          ],
+          ),
         ),
-        title: labelWidget ??
-            Text(
-              label,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
-              style: TextStyle(
-                fontFamily: 'Trebuchet MS',
-                fontSize: 20,
-                color: ColorConstants.labelColor,
-                fontWeight: FontWeight.w400,
+        leadingWidth: 50,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 21, top: 15),
+          child: Stack(
+            children: <Widget>[
+              SvgPicture.asset(
+                'assets/images/ellipse_left.svg',
+                width: 25.35,
+                height: 20.82,
               ),
-            ),
+              Positioned(
+                left: 4,
+                child: SvgPicture.asset(
+                  'assets/images/ellipse_right.svg',
+                  width: 25.35,
+                  height: 20.82,
+                ),
+              ),
+            ],
+          ),
+        ),
+        centerTitle: false,
+        titleSpacing: 0,
+        title: Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Text(
+            label,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+          ),
+        ),
+        titleTextStyle: TextStyle(
+          fontFamily: 'Trebuchet MS',
+          fontSize: 20,
+          color: ColorConstants.labelColor,
+          fontWeight: FontWeight.w400,
+        ),
       );
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
