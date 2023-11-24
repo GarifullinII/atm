@@ -21,16 +21,7 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.bottomLeft,
-              end: const Alignment(5, 1),
-              colors: [
-                ColorConstants.blueColor,
-                ColorConstants.pinkColor
-              ],
-            ),
-          ),
+          decoration: BoxDecoration(gradient: ColorConstants.backgroundColor),
         ),
         leadingWidth: 50,
         leading: Padding(
