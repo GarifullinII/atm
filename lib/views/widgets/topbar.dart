@@ -19,7 +19,8 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) => AppBar(
         backgroundColor: Colors.transparent,
-        elevation: 0,
+        elevation: 10,
+        shadowColor: ColorConstants.shadowTopBarColor,
         flexibleSpace: Container(
           decoration: BoxDecoration(gradient: ColorConstants.backgroundColor),
         ),
