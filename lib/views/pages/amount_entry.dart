@@ -13,9 +13,8 @@ class AmountEntryPage extends StatefulWidget {
 }
 
 class _AmountEntryPageState extends State<AmountEntryPage> {
-
   /// Input controller
-  final TextEditingController amountEntryController = TextEditingController();
+  final TextEditingController controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +28,13 @@ class _AmountEntryPageState extends State<AmountEntryPage> {
             Stack(
               alignment: Alignment.topCenter,
               children: <Widget>[
-                Container(
-                  height: 180,
-                  decoration: BoxDecoration(
-                    gradient: ColorConstants.backgroundColor,
+                ClipPath(
+                  clipper: DrawClip(),
+                  child: Container(
+                    height: 180,
+                    decoration: BoxDecoration(
+                      gradient: ColorConstants.backgroundColor,
+                    ),
                   ),
                 ),
                 Column(
@@ -56,7 +58,7 @@ class _AmountEntryPageState extends State<AmountEntryPage> {
                         right: 89,
                       ),
                       child: TextFormField(
-                        controller: amountEntryController,
+                        controller: controller,
                         decoration: InputDecoration(
                           hintText: '1 234.00 руб',
                           hintStyle: TextStyle(
@@ -84,5 +86,29 @@ class _AmountEntryPageState extends State<AmountEntryPage> {
       ),
       // bottomNavigationBar: BottomBar(),
     );
+  }
+}
+
+class DrawClip extends CustomClipper<Path> {
+  @override
+  getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, size.height*0.85);
+    path.cubicTo(
+      size.width*0.5,
+      size.height*0.8,
+      size.width*0.5,
+      size.height,
+      size.width,
+      size.height*0.9,
+    );
+    path.lineTo(size.width, 0);
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper oldClipper) {
+    return true;
   }
 }
