@@ -14,5 +14,15 @@ class ColorConstants {
       Color(0xFF3827B4), // Start color
       Color(0xFF6C18A4), // End color
     ],
+  stops: [0.0, 1.0],
+  );
+  static LinearGradient circuitSecondColor = LinearGradient(
+    begin: Alignment.bottomLeft,
+    end: Alignment.bottomRight,
+    colors: [
+      const Color(0xFF3827B4).withOpacity(0.82), // #3827B4 in hexadecimal
+      const Color(0xFF6C18A4).withOpacity(0.82), // #6C18A4 in hexadecimal
+    ],
+    stops: [0.0, 0.824], // Equivalent to 0% and 82.4%
   );
 }

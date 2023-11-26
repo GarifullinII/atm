@@ -13,22 +13,34 @@ class AmountEntryPage extends StatefulWidget {
 }
 
 class _AmountEntryPageState extends State<AmountEntryPage>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   /// Input controller
   final TextEditingController controller = TextEditingController();
 
-  /// Animation controller
-  late AnimationController animationController;
+  /// Animation controllers
+  late AnimationController _animationFirstController;
+  late AnimationController _animationSecondController;
 
   @override
   void initState() {
-    animationController = AnimationController(
-      value: 0.0,
+    // Animation for FirstDrawClip
+    _animationFirstController = AnimationController(
+      value: 0,
       duration: const Duration(seconds: 10),
-      upperBound: 1,
-      lowerBound: -1,
+      upperBound: 1, // 1
+      lowerBound: -1, // -1
       vsync: this,
     )..repeat();
+
+    // Animation for SecondDrawClip
+    _animationSecondController = AnimationController(
+      value: 0,
+      duration: const Duration(seconds: 10),
+      upperBound: 0,
+      lowerBound: -1, // -1
+      vsync: this,
+    )..repeat();
+
     super.initState();
   }
 
@@ -50,12 +62,26 @@ class _AmountEntryPageState extends State<AmountEntryPage>
               alignment: Alignment.topCenter,
               children: <Widget>[
                 AnimatedBuilder(
-                  animation: animationController,
+                  animation: _animationFirstController,
                   builder: (BuildContext context, Widget? child) {
                     return ClipPath(
-                      clipper: DrawClip(animationController.value),
+                      clipper: FirstDrawClip(_animationFirstController.value),
                       child: Container(
                         height: 180,
+                        decoration: BoxDecoration(
+                          gradient: ColorConstants.circuitSecondColor,
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                AnimatedBuilder(
+                  animation: _animationSecondController,
+                  builder: (BuildContext context, Widget? child) {
+                    return ClipPath(
+                      clipper: SecondDrawClip(_animationSecondController.value),
+                      child: Container(
+                        height: 200,
                         decoration: BoxDecoration(
                           gradient: ColorConstants.circuitFirstColor,
                         ),
@@ -78,10 +104,7 @@ class _AmountEntryPageState extends State<AmountEntryPage>
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                        left: 89,
-                        // top: 8,
-                        right: 89,
+                      padding: const EdgeInsets.symmetric(horizontal: 89,
                       ),
                       child: TextFormField(
                         controller: controller,
@@ -115,10 +138,11 @@ class _AmountEntryPageState extends State<AmountEntryPage>
   }
 }
 
-class DrawClip extends CustomClipper<Path> {
+class FirstDrawClip extends CustomClipper<Path> {
   double move = 0;
   double slice = math.pi;
-  DrawClip(this.move);
+  FirstDrawClip(this.move);
+  // FirstDrawClip();
 
   @override
   getClip(Size size) {
@@ -126,11 +150,40 @@ class DrawClip extends CustomClipper<Path> {
     path.lineTo(0, size.height * 0.85);
     path.cubicTo(
       size.width * 0.5,
-      size.height * 0.6,
-      size.width * 0.5 + (size.width*0.5)*math.sin(move * slice),
-      size.height + math.cos(move * slice),
+      size.height * 0.65 + math.cos(move * slice),
+      size.width * 0.5 + (size.width * 0.5) * math.sin(move * slice),
+      size.height,
       size.width,
       size.height,
+    );
+    path.lineTo(size.width, 0);
+
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper oldClipper) {
+    return true;
+  }
+}
+
+class SecondDrawClip extends CustomClipper<Path> {
+  double move = 0;
+  double slice = math.pi;
+  SecondDrawClip(this.move);
+  // SecondDrawClip();
+
+  @override
+  getClip(Size size) {
+    Path path = Path();
+    path.lineTo(0, size.height * 0.7);
+    path.cubicTo(
+      size.width * 0.5,
+      size.height * 0.65 + math.cos(move * slice),
+      size.width * 0.55 + (size.width * 0.5) * math.sin(move * slice),
+      size.height,
+      size.width,
+      size.height * 0.8,
     );
     path.lineTo(size.width, 0);
 
