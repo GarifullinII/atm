@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'dart:math' as math;
 import '../../utils/constants.dart';
 import '../widgets/topbar.dart';
 
@@ -12,9 +12,30 @@ class AmountEntryPage extends StatefulWidget {
   State<AmountEntryPage> createState() => _AmountEntryPageState();
 }
 
-class _AmountEntryPageState extends State<AmountEntryPage> {
+class _AmountEntryPageState extends State<AmountEntryPage>
+    with SingleTickerProviderStateMixin {
   /// Input controller
   final TextEditingController controller = TextEditingController();
+
+  /// Animation controller
+  late AnimationController animationController;
+
+  @override
+  void initState() {
+    animationController = AnimationController(
+      value: 0.0,
+      duration: const Duration(seconds: 10),
+      upperBound: 1,
+      lowerBound: -1,
+      vsync: this,
+    )..repeat();
+    super.initState();
+  }
+
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +49,19 @@ class _AmountEntryPageState extends State<AmountEntryPage> {
             Stack(
               alignment: Alignment.topCenter,
               children: <Widget>[
-                ClipPath(
-                  clipper: DrawClip(),
-                  child: Container(
-                    height: 180,
-                    decoration: BoxDecoration(
-                      gradient: ColorConstants.backgroundColor,
-                    ),
-                  ),
+                AnimatedBuilder(
+                  animation: animationController,
+                  builder: (BuildContext context, Widget? child) {
+                    return ClipPath(
+                      clipper: DrawClip(animationController.value),
+                      child: Container(
+                        height: 180,
+                        decoration: BoxDecoration(
+                          gradient: ColorConstants.circuitFirstColor,
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 Column(
                   children: <Widget>[
@@ -90,17 +116,21 @@ class _AmountEntryPageState extends State<AmountEntryPage> {
 }
 
 class DrawClip extends CustomClipper<Path> {
+  double move = 0;
+  double slice = math.pi;
+  DrawClip(this.move);
+
   @override
   getClip(Size size) {
     Path path = Path();
-    path.lineTo(0, size.height*0.85);
+    path.lineTo(0, size.height * 0.85);
     path.cubicTo(
-      size.width*0.5,
-      size.height*0.8,
-      size.width*0.5,
-      size.height,
+      size.width * 0.5,
+      size.height * 0.6,
+      size.width * 0.5 + (size.width*0.5)*math.sin(move * slice),
+      size.height + math.cos(move * slice),
       size.width,
-      size.height*0.9,
+      size.height,
     );
     path.lineTo(size.width, 0);
 

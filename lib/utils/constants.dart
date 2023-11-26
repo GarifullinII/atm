@@ -7,7 +7,7 @@ class ColorConstants {
   static Color blueColor = const Color(0xFF3827B4);
   static Color dividerColor = const Color.fromRGBO(56, 39, 180, 0.06);
   static Color shadowTopBarColor = const Color(0xFF616161);
-  static LinearGradient backgroundColor = const LinearGradient(
+  static LinearGradient circuitFirstColor = const LinearGradient(
     begin: Alignment.bottomLeft,
     end: Alignment.bottomRight,
     colors: [
