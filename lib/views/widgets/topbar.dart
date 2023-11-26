@@ -22,7 +22,7 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
         elevation: 10,
         shadowColor: ColorConstants.shadowTopBarColor,
         flexibleSpace: Container(
-          decoration: BoxDecoration(gradient: ColorConstants.circuitFirstColor),
+          decoration: BoxDecoration(gradient: ColorConstants.circuitColor),
         ),
         leadingWidth: 50,
         leading: Padding(

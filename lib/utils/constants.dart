@@ -7,22 +7,54 @@ class ColorConstants {
   static Color blueColor = const Color(0xFF3827B4);
   static Color dividerColor = const Color.fromRGBO(56, 39, 180, 0.06);
   static Color shadowTopBarColor = const Color(0xFF616161);
-  static LinearGradient circuitFirstColor = const LinearGradient(
+
+  static LinearGradient circuitColor = const LinearGradient(
     begin: Alignment.bottomLeft,
     end: Alignment.bottomRight,
     colors: [
-      Color(0xFF3827B4), // Start color
-      Color(0xFF6C18A4), // End color
+      Color(0xFF3827B4),
+      Color(0xFF6C18A4),
     ],
-  stops: [0.0, 1.0],
+    stops: [0.0, 1.0],
   );
+
+  static LinearGradient circuitFirstColor = LinearGradient(
+    begin: Alignment.bottomLeft,
+    end: Alignment.bottomRight,
+    colors: [
+      const Color(0xFF3827B4).withOpacity(0.7),
+      const Color(0xFF6C18A4).withOpacity(0.7),
+    ],
+  stops: const [0.0, 0.824],
+  );
+
   static LinearGradient circuitSecondColor = LinearGradient(
     begin: Alignment.bottomLeft,
     end: Alignment.bottomRight,
     colors: [
-      const Color(0xFF3827B4).withOpacity(0.82), // #3827B4 in hexadecimal
-      const Color(0xFF6C18A4).withOpacity(0.82), // #6C18A4 in hexadecimal
+      const Color(0xFF3827B4).withOpacity(0.7),
+      const Color(0xFF6C18A4).withOpacity(0.7),
     ],
-    stops: [0.0, 0.824], // Equivalent to 0% and 82.4%
+    stops: const [0.0, 1.0],
+  );
+
+  static LinearGradient circuitThirdColor = LinearGradient(
+    begin: Alignment.bottomLeft,
+    end: Alignment.bottomRight,
+    colors: [
+      const Color(0xFF3827B4).withOpacity(0.4),
+      const Color(0xFF6C18A4).withOpacity(0.4),
+    ],
+    stops: const [0.0, 1.0],
+  );
+
+  static LinearGradient circuitFourthColor = LinearGradient(
+    begin: Alignment.bottomLeft,
+    end: Alignment.bottomRight,
+    colors: [
+      const Color(0xFF3827B4).withOpacity(0.2),
+      const Color(0xFF6C18A4).withOpacity(0.2),
+    ],
+    stops: const [0.0, 1.0],
   );
 }
