@@ -29,8 +29,8 @@ class _AmountEntryPageState extends State<AmountEntryPage>
     _animationFirstController = AnimationController(
       value: 0,
       duration: const Duration(seconds: 10),
-      upperBound: 1, //1
-      lowerBound: -1, //-1
+      upperBound: 1,
+      lowerBound: -1,
       vsync: this,
     )..repeat();
 
@@ -38,8 +38,8 @@ class _AmountEntryPageState extends State<AmountEntryPage>
     _animationSecondController = AnimationController(
       value: 0,
       duration: const Duration(seconds: 10),
-      upperBound: 1, //1
-      lowerBound: 0, //0
+      upperBound: 1,
+      lowerBound: 0,
       vsync: this,
     )..repeat();
 
@@ -47,8 +47,8 @@ class _AmountEntryPageState extends State<AmountEntryPage>
     _animationThirdController = AnimationController(
       value: 0,
       duration: const Duration(seconds: 10),
-      upperBound: 0, //0
-      lowerBound: -1, //-1
+      upperBound: 0,
+      lowerBound: -1,
       vsync: this,
     )..repeat();
 
@@ -56,8 +56,8 @@ class _AmountEntryPageState extends State<AmountEntryPage>
     _animationFourthController = AnimationController(
       value: 0,
       duration: const Duration(seconds: 10),
-      upperBound: 0, //0
-      lowerBound: -1, //-1
+      upperBound: 0,
+      lowerBound: -1,
       vsync: this,
     )..repeat();
 
