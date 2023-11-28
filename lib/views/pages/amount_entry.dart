@@ -154,7 +154,8 @@ class _AmountEntryPageState extends State<AmountEntryPage>
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 89,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 89,
                       ),
                       child: TextFormField(
                         controller: controller,
@@ -179,6 +180,180 @@ class _AmountEntryPageState extends State<AmountEntryPage>
                   ],
                 ),
               ],
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(
+                  ColorConstants.pinkColor,
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 42,
+                  vertical: 22,
+                ),
+                child: Text(
+                  'Выдать сумму',
+                  style: TextStyle(
+                    fontFamily: 'SF Pro Text',
+                    fontSize: 16,
+                    color: ColorConstants.labelColor,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 26),
+              child: ColoredBox(
+                color: ColorConstants.greyOpacityColor,
+                child: const Align(
+                  heightFactor: 2,
+                  child: SizedBox(
+                    height: 10,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 60,
+                top: 41,
+                right: 60,
+                bottom: 45,
+              ),
+              child: Text(
+                'Банкомат не может выдать запрашиваемую сумму',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontFamily: 'SF Pro Text',
+                  fontSize: 18,
+                  color: ColorConstants.pinkColor,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ),
+            ColoredBox(
+              color: ColorConstants.greyOpacityColor,
+              child: const Align(
+                heightFactor: 2,
+                child: SizedBox(
+                  height: 10,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 21,
+                          top: 14,
+                          bottom: 15,
+                        ),
+                        child: Text(
+                          'Баланс банкомата',
+                          style: TextStyle(
+                            fontFamily: 'SF Pro Text',
+                            fontSize: 13,
+                            color: ColorConstants.greyColor,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(left: 21),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              '50 X 100 рублей',
+                              style: TextStyle(
+                                fontFamily: 'SF Pro Text',
+                                fontSize: 14,
+                                color: ColorConstants.blueColor,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Text(
+                              '100 X 200 рублей',
+                              style: TextStyle(
+                                fontFamily: 'SF Pro Text',
+                                fontSize: 14,
+                                color: ColorConstants.blueColor,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Text(
+                              '100 X 2000 рублей',
+                              style: TextStyle(
+                                fontFamily: 'SF Pro Text',
+                                fontSize: 14,
+                                color: ColorConstants.blueColor,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 36,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Text(
+                              '5 X 500 рублей',
+                              style: TextStyle(
+                                fontFamily: 'SF Pro Text',
+                                fontSize: 14,
+                                color: ColorConstants.blueColor,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Text(
+                              '10 X 1000 рублей',
+                              style: TextStyle(
+                                fontFamily: 'SF Pro Text',
+                                fontSize: 14,
+                                color: ColorConstants.blueColor,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                            Text(
+                              '10 X 5000 рублей',
+                              style: TextStyle(
+                                fontFamily: 'SF Pro Text',
+                                fontSize: 14,
+                                color: ColorConstants.blueColor,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            ColoredBox(
+              color: ColorConstants.greyOpacityColor,
+              child: const Align(
+                heightFactor: 2,
+                child: SizedBox(
+                  height: 10,
+                ),
+              ),
             ),
           ],
         ),
