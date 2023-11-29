@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import '../../utils/constants.dart';
+import '../widgets/bottombar.dart';
 import '../widgets/topbar.dart';
 
 /// Amount entry page
@@ -68,6 +69,8 @@ class _AmountEntryPageState extends State<AmountEntryPage>
   void dispose() {
     _animationFirstController.dispose();
     _animationSecondController.dispose();
+    _animationThirdController.dispose();
+    _animationFourthController.dispose();
     super.dispose();
   }
 
@@ -358,7 +361,7 @@ class _AmountEntryPageState extends State<AmountEntryPage>
           ],
         ),
       ),
-      // bottomNavigationBar: BottomBar(),
+      bottomNavigationBar: const BottomBar(),
     );
   }
 }
@@ -370,17 +373,17 @@ class FirstDrawClip extends CustomClipper<Path> {
 
   @override
   getClip(Size size) {
-    Path path = Path();
-    path.lineTo(0, size.height * 0.85);
-    path.cubicTo(
+    Path path = Path()
+    ..lineTo(0, size.height * 0.85)
+    ..cubicTo(
       size.width * 0.5,
       size.height * 0.65 + math.cos(move * slice),
       size.width * 0.5 + (size.width * 0.5) * math.sin(move * slice),
       size.height,
       size.width,
       size.height * 0.95,
-    );
-    path.lineTo(size.width, 0);
+    )
+    ..lineTo(size.width, 0);
 
     return path;
   }
@@ -398,17 +401,17 @@ class SecondDrawClip extends CustomClipper<Path> {
 
   @override
   getClip(Size size) {
-    Path path = Path();
-    path.lineTo(0, size.height * 0.7);
-    path.cubicTo(
+    Path path = Path()
+    ..lineTo(0, size.height * 0.7)
+    ..cubicTo(
       size.width * 0.5,
       size.height * 0.8 + math.cos(move * slice),
       size.width * 0.8 + (size.width * 0.5) * math.sin(move * slice),
       size.height,
       size.width,
       size.height * 0.8,
-    );
-    path.lineTo(size.width, 0);
+    )
+    ..lineTo(size.width, 0);
 
     return path;
   }
@@ -426,17 +429,17 @@ class ThirdDrawClip extends CustomClipper<Path> {
 
   @override
   getClip(Size size) {
-    Path path = Path();
-    path.lineTo(0, size.height * 0.85);
-    path.cubicTo(
+    Path path = Path()
+    ..lineTo(0, size.height * 0.85)
+    ..cubicTo(
       size.width * 0.45 + (size.width * 0.5) * math.sin(move * slice),
       size.height,
       size.width * 0.5,
       size.height * 0.4 + math.cos(move * slice),
       size.width,
       size.height * 0.75,
-    );
-    path.lineTo(size.width, 0);
+    )
+    ..lineTo(size.width, 0);
 
     return path;
   }
@@ -454,17 +457,17 @@ class FourthDrawClip extends CustomClipper<Path> {
 
   @override
   getClip(Size size) {
-    Path path = Path();
-    path.lineTo(0, size.height * 0.68);
-    path.cubicTo(
+    Path path = Path()
+    ..lineTo(0, size.height * 0.68)
+    ..cubicTo(
       size.width * 0.75 + (size.width * 0.5) * math.sin(move * slice),
       size.height,
       size.width * 0.55,
       size.height * 0.4 + math.cos(move * slice),
       size.width,
       size.height * 0.85,
-    );
-    path.lineTo(size.width, 0);
+    )
+    ..lineTo(size.width, 0);
 
     return path;
   }
