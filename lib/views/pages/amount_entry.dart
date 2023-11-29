@@ -374,16 +374,16 @@ class FirstDrawClip extends CustomClipper<Path> {
   @override
   getClip(Size size) {
     Path path = Path()
-    ..lineTo(0, size.height * 0.85)
-    ..cubicTo(
-      size.width * 0.5,
-      size.height * 0.65 + math.cos(move * slice),
-      size.width * 0.5 + (size.width * 0.5) * math.sin(move * slice),
-      size.height,
-      size.width,
-      size.height * 0.95,
-    )
-    ..lineTo(size.width, 0);
+      ..lineTo(0, size.height * 0.85)
+      ..cubicTo(
+        size.width * 0.5,
+        size.height * 0.65 + math.cos(move * slice),
+        size.width * 0.5 + (size.width * 0.5) * math.sin(move * slice),
+        size.height,
+        size.width,
+        size.height * 0.95,
+      )
+      ..lineTo(size.width, 0);
 
     return path;
   }
@@ -402,16 +402,16 @@ class SecondDrawClip extends CustomClipper<Path> {
   @override
   getClip(Size size) {
     Path path = Path()
-    ..lineTo(0, size.height * 0.7)
-    ..cubicTo(
-      size.width * 0.5,
-      size.height * 0.8 + math.cos(move * slice),
-      size.width * 0.8 + (size.width * 0.5) * math.sin(move * slice),
-      size.height,
-      size.width,
-      size.height * 0.8,
-    )
-    ..lineTo(size.width, 0);
+      ..lineTo(0, size.height * 0.7)
+      ..cubicTo(
+        size.width * 0.5,
+        size.height * 0.8 + math.cos(move * slice),
+        size.width * 0.8 + (size.width * 0.5) * math.sin(move * slice),
+        size.height,
+        size.width,
+        size.height * 0.8,
+      )
+      ..lineTo(size.width, 0);
 
     return path;
   }
@@ -430,16 +430,16 @@ class ThirdDrawClip extends CustomClipper<Path> {
   @override
   getClip(Size size) {
     Path path = Path()
-    ..lineTo(0, size.height * 0.85)
-    ..cubicTo(
-      size.width * 0.45 + (size.width * 0.5) * math.sin(move * slice),
-      size.height,
-      size.width * 0.5,
-      size.height * 0.4 + math.cos(move * slice),
-      size.width,
-      size.height * 0.75,
-    )
-    ..lineTo(size.width, 0);
+      ..lineTo(0, size.height * 0.85)
+      ..cubicTo(
+        size.width * 0.45 + (size.width * 0.5) * math.sin(move * slice),
+        size.height,
+        size.width * 0.5,
+        size.height * 0.4 + math.cos(move * slice),
+        size.width,
+        size.height * 0.75,
+      )
+      ..lineTo(size.width, 0);
 
     return path;
   }
@@ -458,16 +458,16 @@ class FourthDrawClip extends CustomClipper<Path> {
   @override
   getClip(Size size) {
     Path path = Path()
-    ..lineTo(0, size.height * 0.68)
-    ..cubicTo(
-      size.width * 0.75 + (size.width * 0.5) * math.sin(move * slice),
-      size.height,
-      size.width * 0.55,
-      size.height * 0.4 + math.cos(move * slice),
-      size.width,
-      size.height * 0.85,
-    )
-    ..lineTo(size.width, 0);
+      ..lineTo(0, size.height * 0.68)
+      ..cubicTo(
+        size.width * 0.75 + (size.width * 0.5) * math.sin(move * slice),
+        size.height,
+        size.width * 0.55,
+        size.height * 0.4 + math.cos(move * slice),
+        size.width,
+        size.height * 0.85,
+      )
+      ..lineTo(size.width, 0);
 
     return path;
   }
